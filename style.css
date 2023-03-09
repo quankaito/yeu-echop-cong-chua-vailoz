@@ -1,0 +1,985 @@
+html {
+	background: rgb(0, 0, 48);
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	position: fixed;
+}
+
+
+/***********************************
+  Mike the Frog is all css with absolute positioning. To make it 
+  easier for me to move him around, if I chose to do so, his face is a child of this .center dot.
+  Then the eyelids, nostrils, and mouth (which is actually a bottom border)
+  are children of the face.
+*************************************/
+
+.center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	height: 0;
+	width: 0;
+}
+
+/*******************************
+ Mike the Frog starting point
+ ******************************/
+.frog {
+	position: absolute;
+}
+
+.froggreen {
+	background-color: #92AE57;
+}
+
+.face {
+	top: -50px;
+	left: -101px;
+	border-radius: 50%;
+	height: 128px;
+	width: 202px;
+}
+
+.eyelids {
+	top: -37px;
+	border-radius: 50%;
+	height: 96px;
+	width: 96px;
+	z-index: 2;
+}
+
+.eyelidright {
+	left: -11px;
+	-webkit-transform: rotate(-25deg);
+	-moz-transform: rotate(-25deg);
+	-ms-transform: rotate(-25deg);
+	-o-transform: rotate(-25deg);
+	transform: rotate(-25deg);
+}
+
+.eyelidleft {
+	right: -11px;
+	-webkit-transform: rotate(25deg);
+	-moz-transform: rotate(-25deg);
+	-ms-transform: rotate(-25deg);
+	-o-transform: rotate(-25deg);
+	transform: rotate(25deg);
+}
+
+/**** .eyeballs are children of .eyelids ****/
+.eyeballs {
+	top: 10px;
+	left: 10px;
+	background-color: #FFE13B; /* yellow eyes */
+	border-radius: 50%;
+	height: 78px;
+	width: 78px;
+	z-index: 3;
+}
+
+/**** .pupils are children of .eyeballs ****/
+.pupils {
+	top: 28px;
+	left: 28px;
+	background-color: rgb(50, 50, 50);
+	border-radius: 50%;
+	height: 23px;
+	width: 23px;
+	box-shadow: 0 0 1px rgba(50, 50, 50, 0.85);
+	-webkit-transition: 0.7s ease-in-out 0.3s;
+	-moz-transition: 0.7s ease-in-out 0.3s;
+	-ms-transition: 0.7s ease-in-out 0.3s;
+	-o-transition: 0.7s ease-in-out 0.3s;
+	transition: 0.7s ease-in-out 0.3s;
+	z-index: 4;
+}
+
+.mouth {
+	background: transparent;
+	top: 4px;
+	left: 13px;
+	border-radius: 48%;
+	border-bottom: 7px solid #6F8346;
+	height: 98px;
+	width: 176px;
+	z-index: 2;
+	-webkit-transition: 0.4s ease-out 0.1s;
+  -o-transition: 0.4s ease-out 0.1s;
+	-moz-transition: 0.4s ease-out 0.1s;
+	-ms-transition: 0.4s ease-out 0.1s;
+	transition: 0.4s ease-out 0.1s;
+}
+
+.nostrils {
+	top: 64px;
+	background-color: #6F8346;
+	border-radius: 50%;
+	height: 10px;
+	width: 10px;
+	-webkit-box-shadow: 0 0 2px 2px #6F8346;
+	-moz-box-shadow: 0 0 2px 2px #6F8346;
+	box-shadow: 0 0 2px 2px #6F8346;
+	-webkit-transition: 0.6s ease-in-out 0.1s;
+	-moz-transition: 0.6s ease-in-out 0.1s;
+	-ms-transition: 0.6s ease-in-out 0.1s;
+	-o-transition: 0.6s ease-in-out 0.1s;
+	transition: 0.6s ease-in-out 0.1s;
+}
+
+.nostrilright {
+	left: 75px;
+}
+
+.nostrilleft {
+	right: 75px;
+}
+/*******************************
+  end of frog starting point
+  ******************************/
+
+
+
+/********************************
+frog cringes on .face:hover;
+*********************************/
+
+.face:hover .nostrils {
+	-webkit-transform: translateY(-2px);
+	-moz-transform: translateY(-2px);
+	-ms-transform: translateY(-2px);
+	-o-transform: translateY(-2px);
+	transform: translateY(-2px);
+	height: 12px;
+	width: 12px;
+}
+
+.face:hover .mouth {
+	width: 126px;
+	top: 6px;
+	border-bottom: 3px solid #596938;
+	left: 38px;
+	border-radius: 8px;
+}
+
+.face:hover .pupilright {
+	-webkit-transform: translate(7px, 9px);
+	-moz-transform: translate(7px, 9px);
+	-ms-transform: translate(7px, 9px);
+	-o-transform: translate(7px, 9px);
+	transform: translate(7px, 9px);
+}
+
+.face:hover .pupilleft {
+	-webkit-transform: translate(-7px, 9px);
+	-moz-transform: translate(7px, 9px);
+	-ms-transform: translate(7px, 9px);
+	-o-transform: translate(7px, 9px);
+	transform: translate(-7px, 9px);
+}
+
+.nostrils:hover {
+	height: 13px;
+	width: 8px;
+	-webkit-transform: translateY(-3px);
+	-moz-transform: translateY(-3px);
+	-ms-transform: translateY(-3px);
+	-o-transform: translateY(-3px);
+	transform: translateY(-3px);
+}
+
+
+
+/*******************************
+  Closing eyelids on :hover
+  ******************************/
+
+.eyelids::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #92AE57;
+	height: 0;
+	width: 96px;
+	border-radius: 96px 96px 8px 8px;
+	z-index: 5;
+}
+
+.eyelids::after {
+	content: "";
+	position: absolute;
+	top: 50px;
+	left: 0;
+	background-color: #92AE57;
+	height: 0;
+	width: 96px;
+	border-radius: 8px 8px 104px 104px;
+	z-index: 5;
+}
+
+.eyelids:hover {
+	position: absolute;
+	top: -33px;
+}
+
+.eyelids:hover::before {
+	height: 46px;
+	border-bottom: 2px solid rgba(60, 60, 60, 0.6);
+}
+
+.eyelids:hover::after {
+	height: 46px;
+	border-top: 1px solid rgba(50, 50, 50, 0.25);
+}
+
+.eyelids:hover .eyeballs {
+	background-color: #BFA92C;
+}
+
+/**** End closing eyelids on :hover ****/
+
+/***************************************************
+Tilt mouth and flare nostrils when poked in the eye on :hover 
+*****************************************************/
+
+.eyelidright:hover ~ .mouth {
+	left: 33px;
+	border-radius: 48% 48% 8px 44px;
+	width: 130px;
+	border-bottom: 3px solid #596938;
+	-webkit-transform: rotate(7deg);
+	-moz-transform: rotate(7deg);
+	-ms-transform: rotate(7deg);
+	-o-transform: rotate(7deg);
+	transform: rotate(7deg);
+}
+
+.eyelidleft:hover ~ .mouth {
+	left: 42px;
+	border-radius: 48% 48% 44px 8px;
+	width: 128px;
+	border-bottom: 3px solid #596938;
+	-webkit-transform: rotate(-7deg);
+	-moz-transform: rotate(-7deg);
+	-ms-transform: rotate(-7deg);
+	-o-transform: rotate(-7deg);
+	transform: rotate(-7deg);
+}
+
+.eyelidright:hover ~ .nostrilright, .eyelidleft:hover ~ .nostrilleft {
+	height: 11px;
+	width: 12px;
+	top: 62px;
+}
+
+.eyelidright:hover ~ .nostrilleft, .eyelidleft:hover ~ .nostrilright {
+	height: 11px;
+	width: 11px;
+	top: 66px;
+}
+
+/******** end of mouth tilt and nostril flare on eyelids:hover ********/
+
+
+/*********************************************
+Close eyes completely on :active.
+**********************************************/
+
+.eyelids:active::before {
+	border-bottom: 1px dotted;
+}
+
+
+.eyelids:active::after {
+	border-top: none;
+}
+
+.eyelids:active .eyeballs, .eyelids:active .pupils {
+	display: none;
+}
+
+/***** end close eyes completely *****/
+
+
+
+/***********************************************
+To get the badges to appear to orbit on the same path,
+they actually each have their own transparent .wheel div laid
+ on top of each other.
+************************************************/
+
+.wheel { 
+	background: transparent;
+	position: absolute;
+	top: -240px;
+	left: -500px; /* Should be half of height & width */
+	height: 1000px; /* If I change this, then I should change .wheel img { left } */
+	width: 1000px;
+	/*border: 3px dotted yellow; */ /* If you want to visualize how the wheel works, un-comment this border.*/
+}
+
+.wheel img {
+	position: absolute;
+	height: 100px;
+	width: 100px;
+	top: -50px;
+	left: 450px; /* half of .wheel {width} minus half of .wheel img {width}*/
+	opacity: 0;
+}
+
+
+/*****************************************
+Beginning of button base styling
+*****************************************/
+
+.button {
+	position: absolute;
+	height: 80px;
+	width: 80px;
+}
+
+.button:hover {
+	background: rgba(155, 155, 204, 0.7);
+	-webkit-box-shadow: inset 0 0 16px 10px rgb(0, 0, 48);
+	-moz-box-shadow: inset 0 0 16px 10px rgb(0, 0, 48);
+	box-shadow: inset 0 0 16px 10px rgb(0, 0, 48);
+}
+
+.squarebutton {
+	top: -260px;
+	border-radius: 12px;
+}
+
+.circlebutton {
+	top: -140px;
+	border-radius: 50%;
+}
+
+.smallcirclebutton {
+	border-radius: 50%;
+	top: -20px;
+	height: 50px;
+	width: 50px;
+}
+
+.forwardbutton {
+	left: -600px;
+}
+
+.reversebutton {
+	right: -600px;
+}
+
+/***** End of button base styling*****/
+
+/**********************************
+   Animation of Badges !!
+************************************/
+
+
+
+/***** Set animation from 'see' keyframes
+  so that badges opacity fades in and out at 
+  start and end of animation *****/
+
+.button:active ~ .wheel img {
+	-webkit-animation: see 8s linear;
+	-moz-animation: see 8s linear;
+	-ms-animation: see 8s linear;
+	animation: see 8s linear;
+    border-radius: 50%;
+}
+
+
+.buttonsquareforward:active ~ .wheel {
+	-webkit-animation: square 8s linear;
+	-moz-animation: square 8s linear;
+	-ms-animation: square 8s linear;
+	animation: square 8s linear;
+}
+
+.buttonsquarereverse:active ~ .wheel {
+	-webkit-animation: square 8s linear reverse;
+	-moz-animation: square 8s linear reverse;
+	-ms-animation: square 8s linear reverse;
+	animation: square 8s linear reverse;
+}
+
+.buttoncircleforward:active ~ .wheel, .buttonsmallcircleforward:active ~ .wheel {
+	-webkit-animation: circle 8s linear;
+	-moz-animation: circle 8s linear;
+	-ms-animation: circle 8s linear;
+	animation: circle 8s linear;
+}
+
+.buttoncirclereverse:active ~ .wheel, .buttonsmallcirclereverse:active ~ .wheel {
+	-webkit-animation: circle 8s linear reverse;
+	-moz-animation: circle 8s linear reverse;
+	-ms-animation: circle 8s linear reverse;
+	animation: circle 8s linear reverse;
+}
+
+/***** Change size of wheel .divs for small circle *****/
+
+.smallcirclebutton:active ~ .wheel {
+	left: -240px;
+	height: 480px;
+	width: 480px;
+}
+
+.smallcirclebutton:active ~ .wheel img {
+	left: 190px;
+}
+
+/***** end of change size of wheel .divs for small circle *****/
+
+/***** Set delays on the 10 separate .wheel divs
+and badge images so that they stagger. *****/
+
+
+#wheel1, #wheel1 img {
+	-webkit-animation-delay: 0.2s;
+	-moz-animation-delay: 0.2s;
+	-ms-animation-delay: 0.2s;
+	animation-delay: 0.2s;
+}
+#wheel2, #wheel2 img { 
+	-webkit-animation-delay: 1s;
+	-moz-animation-delay: 1s;
+	-ms-animation-delay: 1s;
+	animation-delay: 1s;
+}
+#wheel3, #wheel3 img {
+ 	-webkit-animation-delay: 1.8s;
+ 	-moz-animation-delay: 1.8s;
+ 	-ms-animation-delay: 1.8s;
+ 	animation-delay: 1.8s;
+}
+#wheel4, #wheel4 img {
+ 	-webkit-animation-delay: 2.6s;
+ 	-moz-animation-delay: 2.6s;
+ 	-ms-animation-delay: 2.6s;
+ 	animation-delay: 2.6s; 
+}
+#wheel5, #wheel5 img { 
+	-webkit-animation-delay: 3.4s;
+	-moz-animation-delay: 3.4s;
+	-ms-animation-delay: 3.4s;
+	animation-delay: 3.4s; 
+}
+#wheel6, #wheel6 img {
+ 	-webkit-animation-delay: 4.2s;
+ 	-moz-animation-delay: 4.2s;
+ 	-ms-animation-delay: 4.2s;
+ 	animation-delay: 4.2s;
+ }
+#wheel7, #wheel7 img {
+	-webkit-animation-delay: 5s;
+	-moz-animation-delay: 5s;
+	-ms-animation-delay: 5s;
+	animation-delay: 5s;
+}
+#wheel8, #wheel8 img {
+	-webkit-animation-delay: 5.8s;
+	-moz-animation-delay: 5.8s;
+	-ms-animation-delay: 5.8s;
+	animation-delay: 5.8s;
+}
+#wheel9, #wheel9 img {
+	-webkit-animation-delay: 6.6s;
+	-moz-animation-delay: 6.6s;
+	-ms-animation-delay: 6.6s;
+	animation-delay: 6.6s;
+}
+#wheel10, #wheel10 img {
+	-webkit-animation-delay: 7.4s;
+	-moz-animation-delay: 7.4s;
+	-ms-animation-delay: 7.4s;
+	animation-delay: 7.4s;
+}
+
+/****************************************
+  End of animations of the Badges.
+*******************************************/
+
+/****************************************
+  Guidedot base styling
+*****************************************/
+
+.guidedot {
+	position: absolute;
+	height: 10px;
+	width: 10px;
+	border-radius: 50%;
+	top: -5px;
+	left: 35px;
+}
+
+.smallcirclebutton .guidedot {
+	top: -5px;
+	left: 20px;
+}
+
+.squarebutton .guidedot {
+	border-radius: 0;
+}
+
+.guidedot1 {
+	background-color: #FFE629;
+}
+.guidedot2 {
+	background-color: #CCC205;
+}
+.guidedot3 {
+	background-color: #18A6D1;
+}
+.guidedot4 {
+	background-color: #ED4545;
+}
+.guidedot5 {
+	background-color: #E869AF;
+}
+.guidedot6 {
+	background-color: #AD7745;
+}
+.guidedot7 {
+	background-color: #ED4545;
+}
+.guidedot8 {
+	background-color: #FF6136;
+}
+.guidedot9 {
+	background-color: #FF9100;
+}
+.guidedot10 {
+	background-color: #FF71A0;
+}
+
+/***** end of guidedot base styling *****/
+
+/******************************************
+  Animations to the buttons and guidedots
+*******************************************/
+
+/******************************************
+Like the main wheel divs for the badges, each guidedot on
+the buttons actually has its own orbit identical
+to the others. These are the .guidesquare divs and .guidewheel divs.
+*******************************************/
+
+.guidesquare, .guidewheel {
+	position: absolute;
+	background: transparent;
+	height: 80px;
+	width: 80px;
+}
+
+.buttonsquareforward .guidesquare {
+	-webkit-animation: smallsquare 8s linear infinite;
+	-moz-animation: smallsquare 8s linear infinite;
+	-ms-animation: smallsquare 8s linear infinite;
+	animation: smallsquare 8s linear infinite;
+}
+
+.buttonsquarereverse .guidesquare {
+	-webkit-animation: smallsquare 8s linear infinite reverse;
+	-moz-animation: smallsquare 8s linear infinite reverse;
+	-ms-animation: smallsquare 8s linear infinite reverse;
+	animation: smallsquare 8s linear infinite reverse;
+}
+
+.buttoncircleforward .guidewheel,
+.buttonsmallcircleforward .guidewheel {
+	-webkit-animation: circle 8s linear infinite;
+	-moz-animation: circle 8s linear infinite;
+	-ms-animation: circle 8s linear infinite;
+	animation: circle 8s linear infinite;
+}
+
+.buttoncirclereverse .guidewheel,
+.buttonsmallcirclereverse .guidewheel {
+	-webkit-animation: circle 8s linear infinite reverse;
+	-moz-animation: circle 8s linear infinite reverse;
+	-ms-animation: circle 8s linear infinite reverse;
+	animation: circle 8s linear infinite reverse;
+}
+
+.smallcirclebutton .guidewheel {
+	height: 50px;
+	width: 50px;
+}
+
+/***** Lit background animation on button:active *****/
+
+.button:active {
+	-webkit-animation: buttoncolor 17.2s linear;
+	-moz-animation: buttoncolor 17.2s linear;
+	-ms-animation: buttoncolor 17.2s linear;
+	animation: buttoncolor 17.2s linear;
+}
+
+/********** Negative Timing delays to stagger the guidedots on their
+infinite animation. Unfortunately, it appears these won't apply to 
+classes, so I had to use ID's. **********/
+
+#guidewheelforward1, #guidewheelreverse1, #guidesmallwheelforward1,
+#guidesmallwheelreverse1, #guidesquareforward1, #guidesquarereverse1 {
+	-webkit-animation-delay: -7.2s;
+	-moz-animation-delay: -7.2s;
+	-ms-animation-delay: -7.2s;
+	animation-delay: -7.2s;
+}
+
+#guidewheelforward2, #guidewheelreverse2, #guidesmallwheelforward2,
+#guidesmallwheelreverse2, #guidesquareforward2, #guidesquarereverse2 {
+	-webkit-animation-delay: -6.4s;
+	-moz-animation-delay: -6.4s;
+	-ms-animation-delay: -6.4s;
+	animation-delay: -6.4s;
+}
+
+#guidewheelforward3, #guidewheelreverse3, #guidesmallwheelforward3,
+#guidesmallwheelreverse3, #guidesquareforward3, #guidesquarereverse3 {
+	-webkit-animation-delay: -5.6s;
+	-moz-animation-delay: -5.6s;
+	-ms-animation-delay: -5.6s;
+	animation-delay: -5.6s;
+}
+
+#guidewheelforward4, #guidewheelreverse4, #guidesmallwheelforward4,
+#guidesmallwheelreverse4, #guidesquareforward4, #guidesquarereverse4 {
+	-webkit-animation-delay: -4.8s;
+	-moz-animation-delay: -4.8s;
+	-ms-animation-delay: -4.8s;
+	animation-delay: -4.8s;
+}
+
+#guidewheelforward5, #guidewheelreverse5, #guidesmallwheelforward5,
+#guidesmallwheelreverse5, #guidesquareforward5, #guidesquarereverse5 {
+	-webkit-animation-delay: -4s;
+	-moz-animation-delay: -4s;
+	-ms-animation-delay: -4s;
+	animation-delay: -4s;
+}
+
+#guidewheelforward6, #guidewheelreverse6, #guidesmallwheelforward6,
+#guidesmallwheelreverse6, #guidesquareforward6, #guidesquarereverse6 {
+	-webkit-animation-delay: -3.2s;
+	-moz-animation-delay: -3.2s;
+	-ms-animation-delay: -3.2s;
+	animation-delay: -3.2s;
+}
+
+#guidewheelforward7, #guidewheelreverse7, #guidesmallwheelforward7,
+#guidesmallwheelreverse7, #guidesquareforward7, #guidesquarereverse7 {
+	-webkit-animation-delay: -2.4s;
+	-moz-animation-delay: -2.4s;
+	-ms-animation-delay: -2.4s;
+	animation-delay: -2.4s;
+}
+
+#guidewheelforward8, #guidewheelreverse8, #guidesmallwheelforward8,
+#guidesmallwheelreverse8, #guidesquareforward8, #guidesquarereverse8 {
+	-webkit-animation-delay: -1.6s;
+	-moz-animation-delay: -1.6s;
+	-ms-animation-delay: -1.6s;
+	animation-delay: -1.6s;
+}
+
+#guidewheelforward9, #guidewheelreverse9, #guidesmallwheelforward9,
+#guidesmallwheelreverse9, #guidesquareforward9, #guidesquarereverse9 {
+	-webkit-animation-delay: -0.8s;
+	-moz-animation-delay: -0.8s;
+	-ms-animation-delay: -0.8s;
+	animation-delay: -0.8s;
+}
+
+#guidewheelforward10, #guidewheelreverse10, #guidesmallwheelforward10,
+#guidesmallwheelreverse10, #guidesquareforward10, #guidesquarereverse10 {
+	-webkit-animation-delay: 0s;
+	-moz-animation-delay: 0s;
+	-ms-animation-delay: 0s;
+	animation-delay: 0s;
+}
+
+/******************************************
+  End of animations to buttons and guidedots.
+********************************************/
+
+
+
+
+
+
+
+/*************************************
+keyframes
+**************************************/
+
+/***** 'circle' used for guidedots on circular buttons and
+ on badges in circular paths. *****/
+@-webkit-keyframes circle {
+	0%   { -webkit-transform: rotate(0deg  ); }
+	100% { -webkit-transform: rotate(360deg); }	
+}
+
+@-moz-keyframes circle {
+	0%   { -moz-transform: rotate(0deg  ); }
+	100% { -moz-transform: rotate(360deg); }	
+}
+
+@keyframes circle {
+	0%   { transform: rotate(0deg  ); }
+	100% { transform: rotate(360deg); }
+}
+
+/***** 'square' used for badges on rectangular paths. *****/
+
+@-webkit-keyframes square {
+	0%    { -webkit-transform: translate(0);            }
+	12.5% { -webkit-transform: translate(375px);        }
+	37.5% { -webkit-transform: translate(375px, 450px); }
+	62.5% { -webkit-transform: translate(-375px, 450px);}
+	87.5% { -webkit-transform: translate(-375px);       }
+	100%  { -webkit-transform: translate(0);            }
+}
+
+@-moz-keyframes square {
+	0%    { -moz-transform: translate(0);            }
+	12.5% { -moz-transform: translate(375px);        }
+	37.5% { -moz-transform: translate(375px, 450px); }
+	62.5% { -moz-transform: translate(-375px, 450px);}
+	87.5% { -moz-transform: translate(-375px);       }
+	100%  { -moz-transform: translate(0);            }
+}
+
+@keyframes square {
+	0%	  { transform: translate(0);            }
+	12.5% { transform: translate(375px);        }
+	37.5% { transform: translate(375px, 450px); }
+	62.5% { transform: translate(-375px, 450px);}
+	87.5% { transform: translate(-375px);       }
+	100%  { transform: translate(0);            }
+}
+
+
+/***** 'see' used on badges to make them fade in and out opacity
+at the beginning and end of their animation. *****/
+
+@-webkit-keyframes see {
+	8.5%, 
+	91.5% { opacity: 0.9;}
+}
+
+@-moz-keyframes see {
+	8.5%, 
+	91.5% { opacity: 0.9;}
+}
+
+@keyframes see {
+	0%    { opacity: 0;  }
+	8.5%,
+	91.5% { opacity: 0.9;}
+	100%  { opacity: 0;  }
+}
+
+/***** 'smallsquare' used for the path of the guidedots on the 
+ square buttons. *****/
+
+@-webkit-keyframes smallsquare {
+	0%    { -webkit-transform: translate(0);          }
+	12.5% { -webkit-transform: translate(40px);       }
+	37.5% { -webkit-transform: translate(40px, 80px); }
+	62.5% { -webkit-transform: translate(-40px, 80px);}
+	87.5% { -webkit-transform: translate(-40px);      }
+	100%  { -webkit-transform: translate(0);          }
+}
+
+@-moz-keyframes smallsquare {
+	0%    { -moz-transform: translate(0);          }
+	12.5% { -moz-transform: translate(40px);       }
+	37.5% { -moz-transform: translate(40px, 80px); }
+	62.5% { -moz-transform: translate(-40px, 80px);}
+	87.5% { -moz-transform: translate(-40px);      }
+	100%  { -moz-transform: translate(0);          }
+}
+
+@keyframes smallsquare {
+	0%    { transform: translate(0);          }
+	12.5% { transform: translate(40px);       }
+	37.5% { transform: translate(40px, 80px); }
+	62.5% { transform: translate(-40px, 80px);}
+	87.5% { transform: translate(-40px);      }
+	100%  { transform: translate(0);          }
+}
+
+/***** 'buttoncolor' used for the lit background effect on
+ the buttons while :active (while the badges are animated. *****/
+
+@-webkit-keyframes buttoncolor {
+	0%,
+	8.5% { 	background-color: rgba(255, 230, 41, 0.7);
+			box-shadow: 0 0 28px 6px rgb(255, 230, 41);
+		}
+	9%,
+	17.5% { background-color: rgba(204, 194, 5, 0.7);
+	 		box-shadow: 0 0 28px 6px rgb(204, 194, 5);
+	 	}
+	18%,
+	26.5% { background-color: rgba(24, 166, 209, 0.7); 
+			box-shadow: 0 0 28px 6px rgb(24, 166, 209);
+		}
+	27%,
+	35.5% { background-color: rgba(237, 69, 69, 0.7);
+			box-shadow: 0 0 28px 6px rgb(237, 69, 69);
+		}
+	36%,
+	44.5% { background-color: rgba(232, 105, 175, 0.7);
+			box-shadow: 0 0 28px 6px rgb(232, 105, 175);
+		}
+	45%,
+	53.5% { background-color: rgba(173, 119, 69, 0.7);
+			box-shadow: 0 0 28px 6px rgb(173, 119, 69);
+		}
+	54%,
+	62.5% { background-color: rgba(237, 69, 69, 0.7);
+			box-shadow: 0 0 28px 6px rgb(273, 69, 69);
+		}
+	63%,
+	71.5% {	background-color: rgba(255, 97, 54, 0.7);
+			box-shadow: 0 0 28px 6px rgb(255, 97, 54);
+		}
+	72%,
+	80.5% { background-color: rgba(255, 145, 0, 0.7);
+			box-shadow: 0 0 28px 6px rgb(255, 145, 0);
+		}
+	81%,
+	90.5% {	background-color: rgba(255, 113, 160, 0.7);
+			box-shadow: 0 0 28px 6px rgb(255, 113, 160);
+		}
+	92%,
+	94%	{	background-color: rgba(155, 155, 204, 0.7);
+			box-shadow: 0 0 56px 12px rgba(155, 155, 204, 0.9);
+		}
+	96%,
+	100% {	background-color: rgba(0, 0, 48, 0.7);
+		}
+}
+
+@-moz-keyframes buttoncolor {
+	0%,
+	8.5% { 	background-color: rgba(255, 230, 41, 0.7);
+			-moz-box-shadow: 0 0 28px 6px rgb(255, 230, 41);
+		}
+	9%,
+	17.5% { background-color: rgba(204, 194, 5, 0.7);
+	 		-moz-box-shadow: 0 0 28px 6px rgb(204, 194, 5);
+	 	}
+	18%,
+	26.5% { background-color: rgba(24, 166, 209, 0.7); 
+			-moz-box-shadow: 0 0 28px 6px rgb(24, 166, 209);
+		}
+	27%,
+	35.5% { background-color: rgba(237, 69, 69, 0.7);
+			-moz-box-shadow: 0 0 28px 6px rgb(237, 69, 69);
+		}
+	36%,
+	44.5% { background-color: rgba(232, 105, 175, 0.7);
+			-moz-box-shadow: 0 0 28px 6px rgb(232, 105, 175);
+		}
+	45%,
+	53.5% { background-color: rgba(173, 119, 69, 0.7);
+			-moz-box-shadow: 0 0 28px 6px rgb(173, 119, 69);
+		}
+	54%,
+	62.5% { background-color: rgba(237, 69, 69, 0.7);
+			-moz-box-shadow: 0 0 28px 6px rgb(273, 69, 69);
+		}
+	63%,
+	71.5% {	background-color: rgba(255, 97, 54, 0.7);
+			-moz-box-shadow: 0 0 28px 6px rgb(255, 97, 54);
+		}
+	72%,
+	80.5% { background-color: rgba(255, 145, 0, 0.7);
+			-moz-box-shadow: 0 0 28px 6px rgb(255, 145, 0);
+		}
+	81%,
+	90.5% {	background-color: rgba(255, 113, 160, 0.7);
+			-moz-box-shadow: 0 0 28px 6px rgb(255, 113, 160);
+		}
+	92%,
+	94%	{	background-color: rgba(155, 155, 204, 0.7);
+			-moz-box-shadow: 0 0 56px 12px rgba(155, 155, 204, 0.9);
+		}
+	96%,
+	100% {	background-color: rgba(0, 0, 48, 0.7);
+		}
+}
+
+@keyframes buttoncolor {
+	0%,
+	8.5% { 	background-color: rgba(255, 230, 41, 0.7);
+			box-shadow: 0 0 28px 6px rgb(255, 230, 41);
+		}
+	9%,
+	17.5% { background-color: rgba(204, 194, 5, 0.7);
+	 		box-shadow: 0 0 28px 6px rgb(204, 194, 5);
+	 	}
+	18%,
+	26.5% { background-color: rgba(24, 166, 209, 0.7); 
+			box-shadow: 0 0 28px 6px rgb(24, 166, 209);
+		}
+	27%,
+	35.5% { background-color: rgba(237, 69, 69, 0.7);
+			box-shadow: 0 0 28px 6px rgb(237, 69, 69);
+		}
+	36%,
+	44.5% { background-color: rgba(232, 105, 175, 0.7);
+			box-shadow: 0 0 28px 6px rgb(232, 105, 175);
+		}
+	45%,
+	53.5% { background-color: rgba(173, 119, 69, 0.7);
+			box-shadow: 0 0 28px 6px rgb(173, 119, 69);
+		}
+	54%,
+	62.5% { background-color: rgba(237, 69, 69, 0.7);
+			box-shadow: 0 0 28px 6px rgb(273, 69, 69);
+		}
+	63%,
+	71.5% {	background-color: rgba(255, 97, 54, 0.7);
+			box-shadow: 0 0 28px 6px rgb(255, 97, 54);
+		}
+	72%,
+	80.5% { background-color: rgba(255, 145, 0, 0.7);
+			box-shadow: 0 0 28px 6px rgb(255, 145, 0);
+		}
+	81%,
+	90.5% {	background-color: rgba(255, 113, 160, 0.7);
+			box-shadow: 0 0 28px 6px rgb(255, 113, 160);
+		}
+	92%,
+	94%	{	background-color: rgba(155, 155, 204, 0.7);
+			box-shadow: 0 0 56px 12px rgba(155, 155, 204, 0.9);
+		}
+	96%,
+	100% {	background-color: rgba(0, 0, 48, 0.7);
+		}
+}
+
+/************************************************
+  The End. Hope you liked it!! :)
+*************************************************/
+
+
+
+
+
+
